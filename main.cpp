@@ -1,11 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
+#include <cmath>
 
 unsigned int bounce_logo = 1; //direction
 
 int main()
 {
+	srand(time(NULL));
 	sf::RenderWindow tv(sf::VideoMode(800,600),"DVD Video");
 	tv.setVerticalSyncEnabled(true);
 	
@@ -17,7 +19,7 @@ int main()
 	
 	sf::Sprite logo;
 	logo.setTexture(logo_image);
-	logo.setPosition(400,300);
+	logo.setPosition(rand()%800,rand()%600);
 	logo.setOrigin(75, 50);
 	logo.setScale(2, 2);
 	int logo_speed = 1;
@@ -81,6 +83,5 @@ int main()
 		tv.clear(sf::Color::Black);
 		tv.draw(logo);
 		tv.display();
-		std::cout << logo.getPosition().x << " " << logo.getPosition().y << " " << bounce_logo << std::endl;
 	}
 }
